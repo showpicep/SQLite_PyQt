@@ -1,17 +1,25 @@
 import sys
-from PyQt5.QtWidgets import QApplication
-from modules.interface import UIWindow
+from PyQt5.QtWidgets import QApplication, QStackedWidget
+from modules.interface import MainWindow
 
 # TODO: Добавить возможность внесения и удаление данных в БД
 # TODO: Перевести содержимое БД в текстовый файл и зашифравать определенным ключом
 # TODO: Добавить возможность показа определнногой чека (например по id)
 
-def application():
-    app = QApplication(sys.argv)
-    main_window = UIWindow()
-    main_window.show()
-    app.exec_()
 
+# def application():
+#     app = QApplication(sys.argv)
+#     main_window = MainWindow()
+#     widget = QStackedWidget()
+#     widget.addWidget(main_window)
+#     widget.show()
+#     app.exec_()
+# widget = QStackedWidget()
 
 if __name__ == '__main__':
-    application()
+    # application()
+    app = QApplication(sys.argv)
+    widget = QStackedWidget()
+    main_window = MainWindow()
+    main_window.show()
+    app.exec_()

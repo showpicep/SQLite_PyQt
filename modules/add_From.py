@@ -3,6 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QMessageBox
 from modules.help import GetStringOfRequest
 
+
 class FormAdd(QWidget):
     """ Класс графического интерфейса для основной формы """
 

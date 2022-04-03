@@ -9,3 +9,5 @@ PyQt5Designer==5.14.1
 python-dotenv==0.19.2
 qt5-applications==5.15.2.2.2
 qt5-tools==5.15.2.1.2
+
+peewee~=3.14.10

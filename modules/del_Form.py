@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget, QDesktopWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QMessageBox
-from modules.help import GetStringOfRequest
+#from modules.help import GetStringOfRequest
 
 class DelForm(QWidget):
     """ Класс графического интерфейса для основной формы """

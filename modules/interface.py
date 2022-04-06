@@ -2,7 +2,7 @@ import random
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QMessageBox
-from modules.help import GetStringOfRequest
+from modules.help import Get_info_byID
 from modules.del_Form import DelForm
 from modules.add_From import FormAdd
 from modules.pows import tryParseInt
@@ -15,6 +15,8 @@ class MainWindow(QMainWindow):
         """ Иницаилизация """
         super(MainWindow, self).__init__()
         loadUi('ui_files\Check.ui', self)
+        self.delform = DelForm(self)
+        self.addform = FormAdd(self)
         self.setWindowTitle("New Menu")
         self.add_functions_for_buttons()
         self.setFixedSize(1000, 710)
@@ -30,23 +32,26 @@ class MainWindow(QMainWindow):
 
 
     def goto_del(self):
-        self.delform = DelForm(self)
         self.delform.show()
         self.hide()
 
     def goto_add(self):
-        self.addform = FormAdd(self)
         self.addform.show()
         self.close()
 
 
     def GenerateCheck(self):
-        a = GetStringOfRequest()
-        d = ''
-        for i in a:
-            d += str(f'{i} {a[i]}\n')
+        req, cost, amount, name_prod = Get_info_byID(1)
+        a = f'Дата: {req[0]}\nФИО продавца: {req[3]}\nМагазин: {req[2]}\nНазвание продукта    Цена    Количество\n\n'
+        t = {}
+        for i in range(len(name_prod)):
+            t[name_prod[i]] = cost[i], amount[i]
 
-        self.CheckOutput.setPlainText(d)
+        for key in t:
+            a += str(f'{key}:    {t[key][0]} руб.    {t[key][1]} шт.\n\n')
+
+        a += f'\n\n\t\tИТОГО: {req[1]} руб'
+        self.CheckOutput.setPlainText(a)
                 
     def CheckClear(self):
         self.CheckOutput.setPlainText('')

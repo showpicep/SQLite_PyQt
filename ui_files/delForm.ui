@@ -32,19 +32,6 @@
     <string>Назад</string>
    </property>
   </widget>
-  <widget class="QColumnView" name="table">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>830</width>
-     <height>350</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -98,6 +85,56 @@
    <property name="text">
     <string>Удалить</string>
    </property>
+  </widget>
+  <widget class="QPushButton" name="checkButt">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>370</y>
+     <width>110</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 0, 0);
+background-color: rgb(170, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Проверить</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>830</width>
+     <height>350</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <column>
+    <property name="text">
+     <string>Дата</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Общая стоимость</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Название магазина</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>ФИО продавца</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>

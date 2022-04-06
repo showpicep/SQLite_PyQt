@@ -86,6 +86,7 @@ def checkAmount(idx_check, idx_product):
     return a, is_exist
 
 
+
 setRelationship(1, 3)
 # with db:
 # purchases = [

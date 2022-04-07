@@ -122,17 +122,22 @@ background-color: rgb(170, 170, 255);</string>
    </column>
    <column>
     <property name="text">
-     <string>Общая стоимость</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
      <string>Название магазина</string>
     </property>
    </column>
    <column>
     <property name="text">
      <string>ФИО продавца</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Покупки</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Общая стоимость</string>
     </property>
    </column>
   </widget>

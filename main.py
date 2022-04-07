@@ -4,8 +4,6 @@ from modules.interface import MainWindow
 
 # TODO: Добавить возможность внесения и удаление данных в БД
 # TODO: Перевести содержимое БД в текстовый файл и зашифравать определенным ключом
-# TODO: Добавить возможность показа определнногой чека (например по id)
-
 
 # def application():
 #     app = QApplication(sys.argv)

@@ -41,17 +41,23 @@ class MainWindow(QMainWindow):
 
 
     def GenerateCheck(self):
-        req, cost, amount, name_prod = Get_info_byID(1)
-        a = f'Дата: {req[0]}\nФИО продавца: {req[3]}\nМагазин: {req[2]}\nНазвание продукта    Цена    Количество\n\n'
-        t = {}
-        for i in range(len(name_prod)):
-            t[name_prod[i]] = cost[i], amount[i]
+        id, f = tryParseInt(self.get_idx.toPlainText())
+        if f:
+            req, cost, amount, name_prod = Get_info_byID(id)
+            try:
+                tmp = req[0]
+                a = f'Дата: {req[0]}\nФИО продавца: {req[3]}\nМагазин: {req[2]}\nНазвание продукта    Цена    Количество\n\n'
+                t = {}
+                for i in range(len(name_prod)):
+                    t[name_prod[i]] = cost[i], amount[i]
 
-        for key in t:
-            a += str(f'{key}:    {t[key][0]} руб.    {t[key][1]} шт.\n\n')
+                for key in t:
+                    a += str(f'{key}:    {t[key][0]} руб.    {t[key][1]} шт.\n\n')
 
-        a += f'\n\n\t\tИТОГО: {req[1]} руб'
-        self.CheckOutput.setPlainText(a)
+                a += f'\n\n\t\tИТОГО: {req[1]} руб'
+                self.CheckOutput.setPlainText(a)
+            except Exception:
+                self.ShowError('Данного индекса не существует!')
                 
     def CheckClear(self):
         self.CheckOutput.setPlainText('')

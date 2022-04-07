@@ -1,7 +1,6 @@
-import sqlite3 as sq
 import sys
-import time
-
+sys.path.insert(0, 'C:\\Users\\Acer\\Desktop\\Chek\\sqLite')
+#print('\n\n', sys.path)
 from models import *
 
 
@@ -87,7 +86,7 @@ def checkAmount(idx_check, idx_product):
 
 
 
-setRelationship(1, 3)
+# setRelationship(1, 3)
 # with db:
 # purchases = [
 #     {'purchases_name': 'Печенья', 'amount': 1000, 'cost': 50.0},

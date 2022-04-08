@@ -3,7 +3,7 @@ import sys
 from PyQt5 import QtCore
 
 sys.path.insert(0, 'C:\\Users\\Acer\\Desktop\\Chek')
-# print(sys.path)
+from modules.help import CreateCheck
 from PyQt5.QtWidgets import QMainWindow, QWidget, QDesktopWidget, QTableWidgetItem
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QMessageBox
@@ -55,14 +55,16 @@ class FormAdd(QWidget):
         self.ShopName.setCurrentText('')
 
     def Creation(self):
-        changes = {}  # Ключ является название продукта, а значение количеством данного продукта
+        changes = {}  # Ключ является id продукта, а значение количеством данного продукта
         for i in range(self.tableWidget.rowCount()):
             text = self.tableWidget.item(i, 2).text()
             if text != '0':
-                changes[self.tableWidget.item(i, 0).text()] = text
+                changes[i+1] = text  #self.tableWidget.item(i, 0).text()
+
         if len(changes.keys()) != 0:
-            self.ShowError('Почти создали')
-            #self.ShowError(str(self.ShopName.currentText()))
+            CreateCheck(seller_name=self.SellerName.currentText(), shop_name=self.ShopName.currentText(),
+                        id_amount=changes)
+            self.ShowError('Чек создан')
         else:
             self.ShowError('Невозможно создать чек, так как вы не добавили продукты')
         print(changes)

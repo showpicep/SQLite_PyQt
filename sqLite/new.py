@@ -86,22 +86,3 @@ def checkAmount(idx_check, idx_product):
 
 
 
-# setRelationship(1, 3)
-# with db:
-# purchases = [
-#     {'purchases_name': 'Печенья', 'amount': 1000, 'cost': 50.0},
-#     {'purchases_name': 'Кофе', 'amount': 1000, 'cost': 350.0},
-#     {'purchases_name': 'Молоко', 'amount': 1000, 'cost': 80.0},
-#     {'purchases_name': 'Энергетик', 'amount': 1000, 'cost': 70.0},
-#     {'purchases_name': 'Шампунь', 'amount': 500, 'cost': 160.0},
-#     {'purchases_name': 'Мюсли', 'amount': 500, 'cost': 90.0},
-#     {'purchases_name': 'Мука', 'amount': 500, 'cost': 65.0},
-#     {'purchases_name': 'Пена для бритья', 'amount': 500, 'cost': 200.0},
-#     {'purchases_name': 'Яйца', 'amount': 600, 'cost': 80.0},
-#     {'purchases_name': 'Хлопья', 'amount': 640, 'cost': 85.0},
-#     {'purchases_name': 'Чай', 'amount': 600, 'cost': 90.0},
-#     {'purchases_name': 'Чипсы', 'amount': 700, 'cost': 100.0}
-# ]# Заполнение
-#
-# Purchases.insert_many(purchases).execute()
-

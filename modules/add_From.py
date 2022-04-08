@@ -81,7 +81,6 @@ class FormAdd(QWidget):
             if self.ShopName.currentText() == i:
                 for j in self.shops_sallers_name[i]:
                     self.SellerName.addItem(j)
-        #self.ShowError(str(self.ShopName.currentText()))
 
     def backtomenu(self):
         self.close()

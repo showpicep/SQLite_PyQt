@@ -4,7 +4,7 @@ sys.path.insert(0, 'C:\\Users\\Acer\\Desktop\\Chek')
 from PyQt5.QtWidgets import QMainWindow, QWidget, QDesktopWidget, QTableWidgetItem
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QMessageBox
-from modules.help import Get_info_byID
+from modules.help import Get_info_byID, DelCheck
 from modules.pows import tryParseInt
 
 
@@ -25,6 +25,14 @@ class DelForm(QWidget):
         """ Метод для добавления функций для кнопок """
         self.backtoprev.clicked.connect(self.backtomenu)
         self.checkButt.clicked.connect(self.preview)
+        self.remButt.clicked.connect(self.DelByID)
+
+    def DelByID(self):
+        id, f = tryParseInt(self.idxInput.toPlainText())
+        if f:
+            DelCheck(id)
+        else:
+            self.ShowError('Что-то не так с индексом')
 
     def preview(self):
         id, f = tryParseInt(self.idxInput.toPlainText())

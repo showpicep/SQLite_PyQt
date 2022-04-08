@@ -78,4 +78,39 @@ def CreateCheck(seller_name: str, shop_name: str, id_amount: dict):
                                          amount=id_amount[i])
         Set_total_forCheck(idx)
 
-#print(Get_info_byID(1))
+
+def GetLastIdCheck():
+    last = -1
+    with models.db:
+        queru = models.Check.select()
+        for res in queru:
+            last = res.id
+    return last
+
+
+def UpdateIdCheck(old: int, new: int):
+    print(f'old: {old}\nnew: {new}')
+    with models.db:
+        query = models.Check.update(id=new).where(models.Check.id == old)
+        query.execute()
+
+
+def UpdateIdCheckInRelation(old: int, new: int):
+    print(f'old: {old}\nnew: {new}')
+    with models.db:
+        query = models.PurchasesCheck.update(id_check=new).where(models.PurchasesCheck.id_check == old)
+        query.execute()
+
+
+def DelCheck(idx: int):  #idx = new, old = last
+    last = GetLastIdCheck()
+    with models.db:
+        q1 = models.PurchasesCheck.delete().where(models.PurchasesCheck.id_check == idx)
+        q2 = models.Check.delete().where(models.Check.id == idx)
+        q1.execute()
+        q2.execute()
+
+        UpdateIdCheck(last, idx)
+        UpdateIdCheckInRelation(last, idx)
+
+

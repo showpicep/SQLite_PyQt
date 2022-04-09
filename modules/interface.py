@@ -1,11 +1,12 @@
-import random
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QMessageBox
-from modules.help import Get_info_byID
+from modules.help import Get_info_byID, CreateFile
 from modules.del_Form import DelForm
 from modules.add_From import FormAdd
 from modules.pows import tryParseInt
+from cryptography.fernet import Fernet
+
 
 
 class MainWindow(QMainWindow):
@@ -29,7 +30,31 @@ class MainWindow(QMainWindow):
         self.ClearButt.clicked.connect(self.CheckClear)
         self.gotodel.clicked.connect(self.goto_del)
         self.gotoadd.clicked.connect(self.goto_add)
+        self.cipherBtn.clicked.connect(self.Cipher)
 
+    def Cipher(self):
+        CreateFile()
+
+        key = Fernet.generate_key()
+        with open('sqLite/filekey.key', 'wb') as filekey:
+            filekey.write(key)
+
+        # using the generated key
+        fernet = Fernet(key)
+
+        # opening the original file to encrypt
+        with open('sqLite/foo.txt', 'rb') as file:
+            original = file.read()
+
+        # encrypting the file
+        encrypted = fernet.encrypt(original)
+
+        # opening the file in write mode and
+        # writing the encrypted data
+        with open('sqLite/foo2.txt', 'wb') as encrypted_file:
+            encrypted_file.write(encrypted)
+
+        self.ShowError('Created!')
 
     def goto_del(self):
         self.delform.show()

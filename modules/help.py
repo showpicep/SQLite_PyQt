@@ -89,14 +89,12 @@ def GetLastIdCheck():
 
 
 def UpdateIdCheck(old: int, new: int):
-    print(f'old: {old}\nnew: {new}')
     with models.db:
         query = models.Check.update(id=new).where(models.Check.id == old)
         query.execute()
 
 
 def UpdateIdCheckInRelation(old: int, new: int):
-    print(f'old: {old}\nnew: {new}')
     with models.db:
         query = models.PurchasesCheck.update(id_check=new).where(models.PurchasesCheck.id_check == old)
         query.execute()
@@ -114,3 +112,28 @@ def DelCheck(idx: int):  #idx = new, old = last
         UpdateIdCheckInRelation(last, idx)
 
 
+def CreateFile():
+    with models.db:
+        query = models.Check.select()
+        q1 = models.Purchases.select()
+        q2 = models.PurchasesCheck.select()
+        s1 = {}
+        s2 = {}
+        s3 = {}
+        for idx, res in enumerate(query):
+            s1[idx] = [res.id, str(res.date), res.total]
+        for idx, res in enumerate(q1):
+            s2[idx] = [res.id, res.purchases_name, res.cost]
+        for idx, res in enumerate(q2):
+            s3[idx] = [str(res.id_check), str(res.id_purchases)]
+        print(s1, s2, s3, sep='\n')
+        open('sqLite/foo.txt', 'w').close()
+        with open('sqLite/foo.txt', 'a') as fp:
+            for i in s1:
+                fp.write(str(i) + ' ' + str(s1[i]) + '\n')
+            for i in s2:
+                fp.write('\n')
+                fp.write(str(i) + ' ' + str(s2[i]) + '\n')
+            for i in s3:
+                fp.write('\n')
+                fp.write(str(i) + ' ' + str(s3[i]) + '\n')

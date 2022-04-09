@@ -11,3 +11,4 @@ qt5-applications==5.15.2.2.2
 qt5-tools==5.15.2.1.2
 
 peewee~=3.14.10
+cryptography~=36.0.2
